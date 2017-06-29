@@ -63,6 +63,10 @@ function displayStats() {
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  console.log('(1) Eat Inky');
+  console.log('(2) Eat Blinky');
+  console.log('(3) Eat Pinky');
+  console.log('(4) Eat Clyde');
   console.log('(q) Quit');
 }
 
@@ -78,6 +82,25 @@ function eatDot() {
   score += 10;
 }
 
+function eatInky() {
+  console.log('\nYum!');
+  score +=20;
+}
+
+function eatBlinky() {
+  console.log('\nYum!');
+  score +=20;
+}
+
+function eatPinky() {
+  console.log('\nYum!');
+  score +=20;
+}
+
+function eatClyde() {
+  console.log('\nYum!');
+  score +=20;
+}
 
 // Process Player's Input
 function processInput(key) {
@@ -89,6 +112,18 @@ function processInput(key) {
     case 'd':
       eatDot();
       break;
+    case '1':
+      eatInky();
+      break;
+    case '2':
+        eatBlinky();
+        break;
+    case '3':
+        eatPinky();
+        break;
+    case '4':
+        eatClyde();
+        break;
     default:
       console.log('\nInvalid Command!');
   }
