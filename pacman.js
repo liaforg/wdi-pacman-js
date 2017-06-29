@@ -1,7 +1,7 @@
 // Setup initial game stats
 var score = 0;
 var lives = 2;
-
+var ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde'];
 
 // Define your ghosts here
 var inky = {
