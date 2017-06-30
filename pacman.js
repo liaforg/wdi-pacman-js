@@ -108,6 +108,19 @@ function noLives() {
   }
 }
 
+function eatPowerPellet() {
+  if (powerPellets === 0) {
+    return console.log('\nNo Power-Pellets left');
+  }
+  console.log('\nYum!');
+  score += 50;
+  for (var i = 0; i < ghosts.length; i++){
+    ghosts[i].edible = true;
+  }
+  powerPellets -= 1;
+}
+
+
 
 
 // Process Player's Input
