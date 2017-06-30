@@ -1,7 +1,7 @@
 // Setup initial game stats
 var score = 0;
 var lives = 2;
-var ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde'];
+var ghosts = [inky, blinky, pinky, clyde];
 var powerPellets = 4
 
 // Define your ghosts here
@@ -70,11 +70,14 @@ function displayPowerPellets(){
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
-  console.log('(p) Eat Power-Pellet')
-  console.log('(1) Eat Inky');
-  console.log('(2) Eat Blinky');
-  console.log('(3) Eat Pinky');
-  console.log('(4) Eat Clyde');
+
+  if (powerPellets > 0) {
+  console.log('(p) Eat Power-Pellet');}
+  
+  console.log('(1) Eat Inky (edible)');
+  console.log('(2) Eat Blinky (inedible)');
+  console.log('(3) Eat Pinky (edible)');
+  console.log('(4) Eat Clyde (inedible)');
   console.log('(q) Quit');
 }
 
@@ -93,7 +96,7 @@ function eatDot() {
 function eatGhost(ghost) {
   if (ghost.edible) {
     console.log('\nChomp ' + ghost.name + 'Bye Bye ' + ghost.character + "!");
-    score += 100;
+    score += 200;
     ghost.edible = false;
   } else {
     lives -= 1;
@@ -120,7 +123,13 @@ function eatPowerPellet() {
   powerPellets -= 1;
 }
 
-
+function edibleGhost() {
+  if (ghost.edible) {
+    return "(edible)";
+  }else {
+    return "(inedible)";
+  }
+}
 
 
 // Process Player's Input
@@ -137,7 +146,7 @@ function processInput(key) {
       eatPowerPellet();
       break;
     case '1':
-      eatGhost("Inky");
+      eatGhost(ghosts[0]);
       break;
     case '2':
         eatGhost("Blinky");
@@ -171,7 +180,7 @@ drawScreen();
 stdin.on('data', function(key) {
   process.stdout.write(key);
   processInput(key);
-  setTimeout(drawScreen, 300); // The command prompt will flash a message for 300 milliseoncds before it re-draws the screen. You can adjust the 300 number to increase this.
+  setTimeout(drawScreen, 1000); // The command prompt will flash a message for 300 milliseoncds before it re-draws the screen. You can adjust the 300 number to increase this.
 });
 
 // Player Quits
