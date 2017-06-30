@@ -2,6 +2,7 @@
 var score = 0;
 var lives = 2;
 var ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde'];
+var powerPellets = 4
 
 // Define your ghosts here
 var inky = {
@@ -47,6 +48,7 @@ function drawScreen() {
   clearScreen();
   setTimeout(function() {
     displayStats();
+    displayPowerPellets();
     displayMenu();
     displayPrompt();
   }, 10);
@@ -60,9 +62,15 @@ function displayStats() {
   console.log('Score: ' + score + '     Lives: ' + lives);
 }
 
+function displayPowerPellets(){
+  console.log('Power-Pellets: ' + powerPellets)
+}
+
+
 function displayMenu() {
   console.log('\n\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  console.log('(p) Eat Power-Pellet')
   console.log('(1) Eat Inky');
   console.log('(2) Eat Blinky');
   console.log('(3) Eat Pinky');
@@ -111,6 +119,9 @@ function processInput(key) {
       break;
     case 'd':
       eatDot();
+      break;
+    case 'p':
+      eatPowerPellet();
       break;
     case '1':
       eatGhost("Inky");
