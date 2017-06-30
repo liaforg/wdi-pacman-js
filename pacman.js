@@ -82,25 +82,25 @@ function eatDot() {
   score += 10;
 }
 
-function eatInky() {
-  console.log('\nYum!');
-  score +=20;
+function eatGhost(ghost) {
+  if (ghost.edible) {
+    console.log('\nChomp ' + ghost.name + 'Bye Bye ' + ghost.character + "!");
+    score += 100;
+    ghost.edible = false;
+  } else {
+    lives -= 1;
+    console.log('\n You have been eaten by ' + ghost.colour + ghost.name + "!");
+    noLives();
+  }
 }
 
-function eatBlinky() {
-  console.log('\nYum!');
-  score +=20;
+function noLives() {
+  if (lives === 0) {
+    process.exit();
+  }
 }
 
-function eatPinky() {
-  console.log('\nYum!');
-  score +=20;
-}
 
-function eatClyde() {
-  console.log('\nYum!');
-  score +=20;
-}
 
 // Process Player's Input
 function processInput(key) {
@@ -113,16 +113,16 @@ function processInput(key) {
       eatDot();
       break;
     case '1':
-      eatInky();
+      eatGhost("Inky");
       break;
     case '2':
-        eatBlinky();
+        eatGhost("Blinky");
         break;
     case '3':
-        eatPinky();
+        eatGhost("Pinky");
         break;
     case '4':
-        eatClyde();
+        eatGhost("Clyde");
         break;
     default:
       console.log('\nInvalid Command!');
